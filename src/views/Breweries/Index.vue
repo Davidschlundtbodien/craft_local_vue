@@ -3,15 +3,9 @@
     <h1>{{ message }}</h1>
     <div class="container">
       <div v-for="brewery in breweries">
-        <!-- <img v-bind:src="brewery.profile_img" alt="brewery image"> -->
+        <img v-bind:src="brewery.profile_img" alt="brewery image">
         <h2>{{brewery.name}}</h2>
-        <router-link v-bind:to="'/breweries/' + brewery.id"><button>Show more</button></router-link>
-
-        <h4>Upcoming Events: <div v-for="event in brewery.events">
-          <h5>{{event.title}}</h5>
-          <img v-bind:src="event.image" alt="event image">
-          <h5>{{event.date}}</h5>
-        </div></h4>     
+        <router-link v-bind:to="'/breweries/' + brewery.id"><button>Show more</button></router-link>    
              
       </div>
     </div>
