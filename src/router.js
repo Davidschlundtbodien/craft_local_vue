@@ -18,11 +18,11 @@ export default new Router({
   routes: [
     { path: '/', name: 'breweries-index', component: Home },
     { path: '/breweries/:id', name: 'breweries-show', component: BreweriesShow },
-    { path: '/beers/:id', name: 'beers-show', component: BeersShow },
     { path: '/beers/new', name: 'beers-new', component: BeersNew },
+    { path: '/beers/:id', name: 'beers-show', component: BeersShow },
     { path: '/beers/:id/edit', name: 'beers-edit', component: BeersEdit },
-    { path: '/events/:id', name: 'events-show', component: EventsShow },
     { path: '/events/new', name: 'events-new', component: EventsNew },
+    { path: '/events/:id', name: 'events-show', component: EventsShow },
     { path: '/events/:id/edit', name: 'events-edit', component: EventsEdit }
   ]
 });
