@@ -1,6 +1,6 @@
 <template>
   <div class="beers-new">
-    <h1>{{ message }}</h1>
+    <h1>New Brew!</h1>
 
     <form v-on:submit.prevent="submit()">
         <div>
@@ -36,10 +36,12 @@
           <input type="text" class="form-control" id="image" placeholder="Place an image url here" v-model="newBeerImage">
         </div>
         <div>
-          <label for="brewery id">Brewery Id</label>
-          <input type="text" class="form-control" id="brewery id" placeholder="placeholder for logged in brewery" v-model="newBeerBreweryId">
+          <div v-for="format in formats">
+            <input type="checkbox" v-bind:id="format.name" v-bind:value="format.id" v-model="formatIds">
+            <label v-bind:for="format.name">{{format.name}}</label>
+          </div>
         </div>
-
+        
 
       <button type="submit">Create New Beer</button>
     </form>
@@ -54,7 +56,7 @@ import axios from 'axios';
 export default {
   data: function() {
     return {
-      message: "Welcome to Vue.js!",
+      formats:[],
       newBeerName: "",
       newBeerDescription: "",
       newBeerStyle: "",
@@ -63,10 +65,16 @@ export default {
       newBeerIbu: "",
       newBeerSrm: "",
       newBeerGlassware: "",
-      newBeerBreweryId: ""
+      newBeerBreweryId: "",
+      formatIds:[]
     };
   },
-  created: function() {},
+  created: function() {
+    axios.get("/api/formats").then(response => {
+      this.formats = response.data;
+    });
+
+  },
   methods: {
     submit: function() {
       var params = {
@@ -78,9 +86,11 @@ export default {
         ibu: this.newBeerIbu,
         srm: this.newBeerSrm,
         glassware: this.newBeerGlassware,
-        brewery_id: this.newBeerBreweryId
+        brewery_id: this.newBeerBreweryId,
+        format_ids: this.formatIds
       };
       axios.post("/api/beers", params).then(response => {
+        console.log(response.data);
         this.$router.push("/");
       }).catch(error => {
         this.errors = error.response.data.errors;
