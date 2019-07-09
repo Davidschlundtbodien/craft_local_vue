@@ -40,7 +40,6 @@
             <label v-bind:for="format.name">{{format.name}}</label>
             <input type="checkbox" v-bind:id="format.id" v-bind:value="format.id" v-model="formatIds">
           </span>
-          <span>formatIds: {{ formatIds }}</span>
         </div>
 
       <button type="submit">Confirm Changes</button>
