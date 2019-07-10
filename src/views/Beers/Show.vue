@@ -1,7 +1,7 @@
 <template>
   <div class="beers-show">
-    <button v-if="$parent.isLoggedIn()"><router-link v-bind:to="'/beers/' + beer.id + '/edit'">Edit</router-link></button>
-    <button v-if="$parent.isLoggedIn()" v-on:click="destroyBeer(beer)">Remove</button>
+    <button v-if="isCurrentBrewery()"><router-link v-bind:to="'/beers/' + beer.id + '/edit'">Edit</router-link></button>
+    <button v-if="isCurrentBrewery()" v-on:click="destroyBeer(beer)">Remove</button>
     <h1>{{ beer.name }}</h1>
     <img v-bind:src="beer.image" alt="Beer image">
     <h2>{{beer.style}} || {{beer.abv}}% || IBU: {{beer.ibu}} || SRM: {{beer.srm}}</h2>
@@ -42,6 +42,13 @@ export default {
       }).catch(error => {
         this.errors = error.response.data.errors;
       });
+    },
+    isCurrentBrewery: function() {
+      if (this.beer.brewery_id == localStorage.getItem('user_id')) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 };

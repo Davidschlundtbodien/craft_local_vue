@@ -42,16 +42,10 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      loggedInUser: localStorage.getItem('user_name'),
-      brewery: {}
+      loggedInUser: localStorage.getItem('user_name')
     };
   },
-  created: function() {
-    axios.get("/api/breweries/" + localStorage.getItem('user_id')).then(response => {
-      this.brewery = response.data;
-      console.log(this.brewery);
-    });
-  },
+  created: function() {},
   methods: {
     // Force re-render?
     isLoggedIn: function() {
@@ -60,7 +54,8 @@ export default {
       } else {
         return false;
       }
-    }
+    },
+
   }
 };
 </script>

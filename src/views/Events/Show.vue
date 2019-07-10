@@ -1,8 +1,8 @@
 <template>
   <div class="events-show">
 
-    <button v-if="$parent.isLoggedIn()"><router-link v-bind:to="'/events/' + event.id + '/edit'">Edit</router-link></button><br>
-    <button v-if="$parent.isLoggedIn()" v-on:click="destroyEvent(event)">Remove</button><br>
+    <button v-if="isCurrentBrewery()"><router-link v-bind:to="'/events/' + event.id + '/edit'">Edit</router-link></button><br>
+    <button v-if="isCurrentBrewery()" v-on:click="destroyEvent(event)">Remove</button><br>
 
     <img v-bind:src="event.image" alt="Event image">
     <h1>{{ event.title }} || {{event.scheduled_date}}</h1>
@@ -41,6 +41,13 @@ export default {
       }).catch(error => {
         this.errors = error.response.data.errors;
       });
+    },
+    isCurrentBrewery: function() {
+      if (this.event.brewery_id == localStorage.getItem('user_id')) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 };
