@@ -1,7 +1,7 @@
 <template>
   <div class="beers-show">
-    <button><router-link v-bind:to="'/beers/' + beer.id + '/edit'">Edit</router-link></button>
-    <button v-on:click="destroyBeer(beer)">Remove</button>
+    <button v-if="$parent.isLoggedIn()"><router-link v-bind:to="'/beers/' + beer.id + '/edit'">Edit</router-link></button>
+    <button v-if="$parent.isLoggedIn()" v-on:click="destroyBeer(beer)">Remove</button>
     <h1>{{ beer.name }}</h1>
     <img v-bind:src="beer.image" alt="Beer image">
     <h2>{{beer.style}} || {{beer.abv}}% || IBU: {{beer.ibu}} || SRM: {{beer.srm}}</h2>

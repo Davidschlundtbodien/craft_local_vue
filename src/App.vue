@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link>||
-      <router-link to="/beers/new">New Beer</router-link>||
-      <router-link to="/events/new">New Event</router-link><br>
-      <router-link to="/breweries">Signup</router-link>||
-      <router-link to="/login">Login</router-link>||
-      <router-link to="/logout">Logout</router-link>
+      <router-link to="/">| Home |</router-link>
+      <router-link v-if="isLoggedIn()" to="/beers/new">| New Beer |</router-link>
+      <router-link v-if="isLoggedIn()" to="/events/new">| New Event |<br></router-link>
+      <router-link v-if="!isLoggedIn()" to="/breweries">| Signup |</router-link>
+      <router-link v-if="!isLoggedIn()" to="/login">| Login |</router-link>
+      <!-- Name sticks until refresh -->
+      <span v-if="isLoggedIn()">| Logged in as: {{ loggedInUser }} |<br></span>
+      <router-link v-if="isLoggedIn()" to="/logout">| Logout |</router-link>
 
     </div>
     <router-view/>
@@ -34,3 +36,31 @@
   color: #42b983;
 }
 </style>
+
+<script>
+import axios from "axios";
+export default {
+  data: function() {
+    return {
+      loggedInUser: localStorage.getItem('user_name'),
+      brewery: {}
+    };
+  },
+  created: function() {
+    axios.get("/api/breweries/" + localStorage.getItem('user_id')).then(response => {
+      this.brewery = response.data;
+      console.log(this.brewery);
+    });
+  },
+  methods: {
+    // Force re-render?
+    isLoggedIn: function() {
+      if (localStorage.getItem('jwt')) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+};
+</script>

@@ -90,7 +90,7 @@ export default {
         glassware: this.beer.glassware,
         format_ids: this.formatIds
       };
-      axios.patch("/api/beers" + this.beer.id, params).then(response => {
+      axios.patch("/api/beers/" + this.beer.id, params).then(response => {
         this.$router.push("/beers/" + this.beer.id);
       }).catch(error => {
         this.errors = error.response.data.errors;
