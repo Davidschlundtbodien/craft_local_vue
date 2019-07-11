@@ -6,9 +6,9 @@
       <router-link v-if="isLoggedIn()" to="/events/new">| New Event |<br></router-link>
       <router-link v-if="!isLoggedIn()" to="/breweries">| Signup |</router-link>
       <router-link v-if="!isLoggedIn()" to="/login">| Login |</router-link>
-      <!-- Name sticks until refresh -->
-      <span v-if="isLoggedIn()">| Logged in as: {{ loggedInUser }} |<br></span>
+      <span v-if="isLoggedIn()">| Logged in as: {{ userName() }} |<br></span>
       <router-link v-if="isLoggedIn()" to="/logout">| Logout |</router-link>
+      <input type="text" class="form-control" id="name" placeholder="Search" v-model="searchFilter" list="search-filters">
 
     </div>
     <router-view/>
@@ -42,12 +42,11 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      loggedInUser: localStorage.getItem('user_name')
+      searchFilter: ""
     };
   },
   created: function() {},
   methods: {
-    // Force re-render?
     isLoggedIn: function() {
       if (localStorage.getItem('jwt')) {
         return true;
@@ -55,6 +54,12 @@ export default {
         return false;
       }
     },
+    userName: function() {
+      return localStorage.getItem("user_name");
+    },
+    searchClear: function() {
+      this.searchFilter = "";
+    }
 
   }
 };

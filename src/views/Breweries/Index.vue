@@ -1,11 +1,19 @@
 <template>
   <div class="breweries-index">
+
+    <datalist id="search-filters">
+      <option v-for="brewery in breweries">{{brewery.name}}</option>
+    </datalist>
+
+
     <h1>{{ message }}</h1>
     <div class="container">
-      <div v-for="brewery in breweries">
+      <div v-for="brewery in filterBy(breweries, $parent.searchFilter)">
         <!-- <img v-bind:src="brewery.profile_img" alt="brewery image"> -->
         <h2>{{brewery.name}}</h2>
-        <router-link v-bind:to="'/breweries/' + brewery.id"><button>Show more</button></router-link>    
+        <router-link v-bind:to="'/breweries/' + brewery.id">
+          <button v-on:click="$parent.searchClear()">Show more</button>
+        </router-link>    
              
       </div>
     </div>
@@ -17,8 +25,10 @@
 
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
 
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function() {
     return {
       message: "Welcome to Craft Local",
