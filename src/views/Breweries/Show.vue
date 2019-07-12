@@ -8,7 +8,7 @@
     </datalist>
     
     <div class="container">
-      <h4>Upcoming Events: <div v-for="event in filterBy(brewery.events, $parent.searchFilter)">
+      <h4>Upcoming Events: <div v-for="event in filterBy(brewery.events, $parent.searchFilter, 'title', 'location')">
         <h5>{{event.title}}</h5>
         <h5>{{event.date}}</h5>
         <img v-bind:src="event.image" alt="Event image">

@@ -8,7 +8,7 @@
       <router-link v-if="!isLoggedIn()" to="/login">| Login |</router-link>
       <span v-if="isLoggedIn()">| Logged in as: {{ userName() }} |<br></span>
       <router-link v-if="isLoggedIn()" to="/logout">| Logout |</router-link>
-      <input type="text" class="form-control" id="name" placeholder="Search" v-model="searchFilter" list="search-filters">
+      <input type="text" class="form-control" placeholder="Search" v-model="searchFilter" list="search-filters">
 
     </div>
     <router-view/>

@@ -14,7 +14,11 @@
         <router-link v-bind:to="'/breweries/' + brewery.id">
           <button v-on:click="$parent.searchClear()">Show more</button>
         </router-link>    
-             
+        <div v-for="beer in limitBy(orderBy(filterBy(brewery.beers), 'released'), 1)">
+          <router-link v-bind:to="'/beers/' + beer.id">
+          <span v-on:click="$parent.searchClear()">{{beer.name}} || {{beer.style}}</span>
+          </router-link>
+        </div>     
       </div>
     </div>
   </div>
@@ -32,7 +36,8 @@ export default {
   data: function() {
     return {
       message: "Welcome to Craft Local",
-      breweries: []
+      breweries: [],
+
     };
   },
   created: function() {
