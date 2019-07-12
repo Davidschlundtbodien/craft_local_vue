@@ -1,11 +1,14 @@
 <template>
   <div class="breweries-show">
-    <h1>{{ brewery.name }}</h1>
-
+    
     <datalist id="search-filters">
       <option v-for="beer in brewery.beers">{{beer.name}}</option>
       <option v-for="event in brewery.events">{{event.location}}</option>
     </datalist>
+
+    <h1>{{ brewery.name }}</h1>
+    <h4>{{ brewery.address}}</h4>
+    <img v-bind:src="brewery.profile_img" alt="Profile image">
     
     <div class="container">
       <h4>Upcoming Events: <div v-for="event in filterBy(brewery.events, $parent.searchFilter, 'title', 'location')">

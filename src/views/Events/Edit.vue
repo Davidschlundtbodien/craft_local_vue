@@ -13,7 +13,7 @@
         </div>
         <div>
           <label for="location">Location</label>
-          <input type="text" class="form-control" id="location" placeholder="Nonic Pint" v-model="event.location">
+          <input type="text" class="form-control" id="location" placeholder="Taproom" v-model="event.location">
         </div>
         <div>
           <label for="content">Content</label>
@@ -62,7 +62,7 @@ export default {
       });
     });
 
-    axios.get("/api/breweries/1").then(response => {
+    axios.get("/api/breweries/" + this.event.brewery_id).then(response => {
       this.beers = response.data.beers;
       console.log(this.beers);
     });
@@ -76,7 +76,7 @@ export default {
         content: this.event.content,
         image: this.event.image,
       };
-      axios.patch("/api/events" + this.beer.id, params).then(response => {
+      axios.patch("/api/events" + this.event.id, params).then(response => {
         this.$router.push("/events/" + this.event.id);
       }).catch(error => {
         this.errors = error.response.data.errors;

@@ -6,6 +6,7 @@
       <router-link v-if="isLoggedIn()" to="/events/new">| New Event |<br></router-link>
       <router-link v-if="!isLoggedIn()" to="/breweries">| Signup |</router-link>
       <router-link v-if="!isLoggedIn()" to="/login">| Login |</router-link>
+      <router-link v-if="isLoggedIn()" v-bind:to="'/breweries/' + userId() + '/edit'">| Edit Profile |</router-link>
       <span v-if="isLoggedIn()">| Logged in as: {{ userName() }} |<br></span>
       <router-link v-if="isLoggedIn()" to="/logout">| Logout |</router-link>
       <input type="text" class="form-control" placeholder="Search" v-model="searchFilter" list="search-filters">
@@ -56,6 +57,9 @@ export default {
     },
     userName: function() {
       return localStorage.getItem("user_name");
+    },
+    userId: function() {
+      return localStorage.getItem("user_id");
     },
     searchClear: function() {
       this.searchFilter = "";

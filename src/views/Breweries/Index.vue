@@ -11,14 +11,16 @@
       <div v-for="brewery in filterBy(breweries, $parent.searchFilter)">
         <!-- <img v-bind:src="brewery.profile_img" alt="brewery image"> -->
         <h2>{{brewery.name}}</h2>
-        <router-link v-bind:to="'/breweries/' + brewery.id">
-          <button v-on:click="$parent.searchClear()">Show more</button>
-        </router-link>    
+        <h4>{{brewery.address}}</h4>
         <div v-for="beer in limitBy(orderBy(filterBy(brewery.beers), 'released'), 1)">
           <router-link v-bind:to="'/beers/' + beer.id">
           <span v-on:click="$parent.searchClear()">{{beer.name}} || {{beer.style}}</span>
           </router-link>
         </div>     
+        <router-link v-bind:to="'/breweries/' + brewery.id">
+          <button v-on:click="$parent.searchClear()">Show more</button>
+        </router-link>    
+
       </div>
     </div>
   </div>

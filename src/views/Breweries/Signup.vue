@@ -11,6 +11,10 @@
           <input type="text" class="form-control" v-model="name">
         </div>
         <div class="form-group">
+          <label>Address:</label> 
+          <input type="text" class="form-control" v-model="address">
+        </div>
+        <div class="form-group">
           <label>Email:</label>
           <input type="email" class="form-control" v-model="email">
         </div>
@@ -35,6 +39,7 @@ export default {
   data: function() {
     return {
       name: "",
+      address: "",
       email: "",
       password: "",
       passwordConfirmation: "",
@@ -45,6 +50,7 @@ export default {
     submit: function() {
       var params = {
         name: this.name,
+        address: this.address,
         email: this.email,
         password: this.password,
         password_confirmation: this.passwordConfirmation
