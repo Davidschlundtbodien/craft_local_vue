@@ -62,7 +62,7 @@ export default {
       });
     });
 
-    axios.get("/api/breweries/" + this.event.brewery_id).then(response => {
+    axios.get("/api/breweries/" + localStorage.getItem('user_id')).then(response => {
       this.beers = response.data.beers;
       console.log(this.beers);
     });
@@ -75,13 +75,22 @@ export default {
         location: this.event.location,
         content: this.event.content,
         image: this.event.image,
+        beer_ids: this.beerIds
       };
-      axios.patch("/api/events" + this.event.id, params).then(response => {
+      axios.patch("/api/events/" + this.event.id, params).then(response => {
         this.$router.push("/events/" + this.event.id);
       }).catch(error => {
         this.errors = error.response.data.errors;
       });
-    }
+    },
+    destroyEvent: function(event) {
+      axios.delete("/api/events/" + this.event.id).then(response => {
+        console.log("Event Cancelled", response.data);
+        this.$router.push("/");
+      }).catch(error => {
+        this.errors = error.response.data.errors;
+      });
+    } 
   }
 };
 </script>

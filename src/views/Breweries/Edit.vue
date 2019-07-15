@@ -50,6 +50,7 @@ export default {
         profile_img: this.brewery.profile_img
       };
       axios.patch("/api/breweries/" + localStorage.getItem('user_id'), params).then(response => {
+        localStorage.setItem("user_name", this.brewery.name);
         this.$router.push("/breweries/" + this.brewery.id);
       }).catch(error => {
         this.errors = error.response.data.errors;
