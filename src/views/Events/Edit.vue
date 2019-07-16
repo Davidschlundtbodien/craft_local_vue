@@ -8,8 +8,8 @@
           <input type="text" class="form-control" id="title" placeholder="Event title" v-model="event.title">
         </div>
         <div>
-          <label for="date">Scheduled date</label>
-          <input type="text" class="form-control" id="date" placeholder="July 4 2019" v-model="event.scheduled_date">
+          <label v-bind:for="event.date">Scheduled date: {{event.date}}</label>
+          <datetime type="datetime" placeholder="Click to Change date" v-model="event.scheduled_date" use12-hour auto></datetime>
         </div>
         <div>
           <label for="location">Location</label>
@@ -86,7 +86,7 @@ export default {
     destroyEvent: function(event) {
       axios.delete("/api/events/" + this.event.id).then(response => {
         console.log("Event Cancelled", response.data);
-        this.$router.push("/");
+        this.$router.push("/breweries/" + localStorage.getItem('user_id'));
       }).catch(error => {
         this.errors = error.response.data.errors;
       });

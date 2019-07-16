@@ -86,7 +86,6 @@ export default {
         ibu: this.newBeerIbu,
         srm: this.newBeerSrm,
         glassware: this.newBeerGlassware,
-        brewery_id: this.newBeerBreweryId,
         format_ids: this.formatIds
       };
       axios.post("/api/beers", params).then(response => {

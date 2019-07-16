@@ -3,31 +3,33 @@
     <h1>Schedule a New Event</h1>
 
     <form v-on:submit.prevent="submit()">
-        <div>
-          <label for="title">Title</label>
-          <input type="text" class="form-control" id="title" placeholder="Event title" v-model="newEventTitle">
-        </div>
+
         <div>
           <label for="date">Scheduled date</label>
-          <input type="text" class="form-control" id="date" placeholder="July 4 2019" v-model="newEventScheduledDate">
+          <datetime type="datetime" placeholder="Click to pick a date!" v-model="newEventScheduledDate" use12-hour auto></datetime>
         </div>
         <div>
-          <label for="location">Location</label>
-          <input type="text" class="form-control" id="location" placeholder="Nonic Pint" v-model="newEventLocation">
+          <label for="title">Title:</label>
+          <input type="text" class="form-control" placeholder="Event title" v-model="newEventTitle">
         </div>
         <div>
-          <label for="content">Content</label>
-          <input type="text" class="form-control" id="content" placeholder="Quick summary of event" v-model="newEventContent">
+          <label for="location">Location:</label>
+          <input type="text" class="form-control" id="location" placeholder="Where the event is held" v-model="newEventLocation">
         </div>
         <div>
-          <label for="image">Image</label>
-          <input type="text" class="form-control" id="image" placeholder="Place an image url here" v-model="newEventImage">
+          <label for="content">Content:</label>
+          <input type="text" class="form-control" placeholder="Quick summary of event" v-model="newEventContent">
+        </div>
+        <div>
+          <label for="image">Image:</label>
+          <input type="text" class="form-control" placeholder="Place an image url here" v-model="newEventImage">
         </div>
         <div v-for="beer in beers">
           <input type="checkbox" v-bind:id="beer.name" v-bind:value="beer.id" v-model="beerIds">
           <label v-bind:for="beer.name">{{beer.name}}</label>
         </div>
 
+        
 
 
       <button type="submit">Schedule New Event</button>
@@ -49,13 +51,11 @@ export default {
       newEventLocation: "",
       newEventContent: "",
       newEventImage: "",
-      newEventBreweryId: "",
       beerIds:[]
     };
   },
-  // needs current user
   created: function() {
-    axios.get("/api/breweries/1").then(response => {
+    axios.get("/api/breweries/" + localStorage.getItem('user_id')).then(response => {
       this.beers = response.data.beers;
       console.log(this.beers);
     });
@@ -63,14 +63,15 @@ export default {
   methods: {
     submit: function() {
       var params = {
-        name: this.newEventTitle,
+        title: this.newEventTitle,
         scheduled_date: this.newEventScheduledDate,
         location: this.newEventLocation,
         content: this.newEventContent,
-        image: this.newEventImage
+        image: this.newEventImage,
+        beer_ids: this.beerIds
       };
       axios.post("/api/events", params).then(response => {
-        this.$router.push("/");
+        this.$router.push("/breweries/" + localStorage.getItem('user_id'));
       }).catch(error => {
         this.errors = error.response.data.errors;
       });

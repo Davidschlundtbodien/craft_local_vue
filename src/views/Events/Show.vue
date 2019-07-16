@@ -5,7 +5,7 @@
     <button v-if="isCurrentBrewery()" v-on:click="destroyEvent(event)">Remove</button><br>
 
     <img v-bind:src="event.image" alt="Event image">
-    <h1>{{ event.title }} || {{event.scheduled_date}}</h1>
+    <h1>{{ event.title }} || {{event.date}}</h1>
     <h2>{{event.location}}</h2>
     <p>{{event.content}}</p>
     <div v-for="beer in event.beers">
@@ -58,7 +58,6 @@ export default {
     axios.get("/api/events/" + this.$route.params.id).then(response => {
       this.event = response.data;
       console.log(this.event);
-      console.log(this.event.longitude);
     });
   },
   updated: function() {
@@ -90,7 +89,7 @@ export default {
     destroyEvent: function(beer) {
       axios.delete("/api/events/" + this.event.id).then(response => {
         console.log("Event Removed", response.data);
-        this.$router.push("/");
+        this.$router.push("/breweries/" + localStorage.getItem('user_id'));
       }).catch(error => {
         this.errors = error.response.data.errors;
       });
