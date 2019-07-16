@@ -1,22 +1,5 @@
 <template>
   <div class="breweries-login">
-    <!-- <div class="container"> -->
-<!--       <form v-on:submit.prevent="submit()">
-        <h1>Login</h1>
-        <ul>
-          <li class="text-danger" v-for="error in errors">{{ error }}</li>
-        </ul>
-        <div class="form-group">
-          <label>Email:</label>
-          <input type="email" class="form-control" id="email" v-model="email">
-        </div>
-        <div class="form-group">
-          <label>Password:</label>
-          <input type="password" class="form-control" v-model="password">
-        </div>
-        <input type="submit" class="btn btn-primary" value="Submit">
-      </form>
-    </div> -->
 
     <section class="g-height-100vh d-flex align-items-center g-bg-size-cover g-bg-pos-top-center" style="background-image: url(https://www.tourmorgantown.com/wp-content/uploads/2018/02/CraftBeer.jpg);">
       <div class="container g-py-100 g-pos-rel g-z-index-1">
@@ -68,6 +51,7 @@
       </div>
     </section>
   </div>
+  
 </template>
 
 <script>

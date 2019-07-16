@@ -1,6 +1,6 @@
 <template>
   <div class="beers-new">
-    <section class="g-min-height-100vh g-flex-centered g-bg-img-hero g-bg-pos-top-center" style="background-image: url(https://timeincsecure-a.akamaihd.net/rtmp_uds/3281700261001/201903/1518/3281700261001_6010332442001_6010327553001-vs.jpg?pubId=3281700261001&videoId=6010327553001);">
+    <section class="g-min-height-100vh g-flex-centered g-bg-img-hero g-bg-pos-top-center" style="background-image: url(https://chamberbusinessnews.com/wp-content/uploads/2019/06/beer-2370783_1920.jpg);">
       <div class="container g-py-50 g-pos-rel g-z-index-1">
           <div class="row justify-content-center u-box-shadow-v24">
             <div class="col-sm-10 col-md-9 col-lg-6">
@@ -51,7 +51,7 @@
                   </div>
 
                   <!-- Inline Checkboxes -->
-                  <h4 class="h6 g-font-weight-700 g-mb-20">Inline checkboxes</h4>
+                  <h4 class="h6 g-font-weight-700 g-mb-20"> Choose Format Options</h4>
                   <div class="g-mb-20">
                      <label class="form-check-inline u-check g-pl-25" v-for="format in formats">
                        <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox" v-bind:id="format.name" v-bind:value="format.id" v-model="formatIds">

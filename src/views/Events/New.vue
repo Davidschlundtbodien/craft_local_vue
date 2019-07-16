@@ -1,6 +1,6 @@
 <template>
   <div class="events-new">
-    <section class="g-min-height-100vh g-flex-centered g-bg-img-hero g-bg-pos-top-center" style="background-image: url(https://chamberbusinessnews.com/wp-content/uploads/2019/06/beer-2370783_1920.jpg);">
+    <section class="g-min-height-100vh g-flex-centered g-bg-img-hero g-bg-pos-top-center" style="background-image: url(https://assets.visitmilwaukee.org/visitmke/media/global/Partner%20Images/Gallery%20Size/VM-ThirdSpaceBrewing-Beers.jpg?ext=.jpg&mode=crop&width=1920&height=1080&scale=both);">
       <div class="container g-py-50 g-pos-rel g-z-index-1">
           <div class="row justify-content-center u-box-shadow-v24">
             <div class="col-sm-10 col-md-9 col-lg-6">
@@ -13,7 +13,7 @@
                 <form class="g-py-15" v-on:submit.prevent="submit()">
                   <div class="row">
                     <div class="col-xs-12 col-sm-6 mb-4">
-                      <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" type="text" placeholder="Event Title" v-model="newTitleName">
+                      <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" type="text" placeholder="Event Title" v-model="newEventTitle">
                     </div>
 
                     <div class="col-xs-12 col-sm-6 mb-4">
@@ -40,7 +40,7 @@
                   <h4 class="h6 g-font-weight-700 g-mb-20">Choose your beers for the event</h4>
                   <div class="g-mb-20">
                      <label class="form-check-inline u-check g-pl-25" v-for="beer in beers">
-                       <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox" v-bind:id="beer.name" v-bind:value="beer.id" v-model="formatIds">
+                       <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox" v-bind:id="beer.name" v-bind:value="beer.id" v-model="beerIds">
                        <div class="u-check-icon-checkbox-v6 g-absolute-centered--y g-left-0">
                          <i class="fa" data-check-icon=""></i>
                        </div>
