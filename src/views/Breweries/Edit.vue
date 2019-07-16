@@ -1,6 +1,6 @@
 <template>
   <div class="breweries-edit">
-    <h1>Editing: {{brewery.name}}</h1>
+<!--     <h1>Editing: {{brewery.name}}</h1>
 
       <span>Delete this entire Brewery<button v-on:click="destroyBrewery(brewery)">Delete Profile</button></span>
 
@@ -18,10 +18,7 @@
           <input type="text" class="form-control" placeholder="Choose Profile Image" v-model="brewery.profile_img">
         </div>
       <button type="submit">Confirm Changes</button>
-    </form>
-
-
-
+    </form> -->
   </div>
 </template>
 
