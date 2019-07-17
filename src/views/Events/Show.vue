@@ -1,7 +1,7 @@
 <template>
   <div class="events-show">
 
-    <button v-if="isCurrentBrewery()"><router-link v-bind:to="'/events/' + event.id + '/edit'">Edit</router-link></button><br>
+<!--     <button v-if="isCurrentBrewery()"><router-link v-bind:to="'/events/' + event.id + '/edit'">Edit</router-link></button><br>
     <button v-if="isCurrentBrewery()" v-on:click="destroyEvent(event)">Remove</button><br>
 
     <img v-bind:src="event.image" alt="Event image">
@@ -14,10 +14,58 @@
     </div>
 
 
-    <div id="map" class="container"></div>
+    <div id="map"></div>
 
 
+ -->
 
+    <!-- Footer -->
+    <section class="container-fluid px-0">
+      <div class="row no-gutters g-min-height-80vh">
+        <!-- section Content -->
+        <div class="col-lg d-flex g-bg-black-opacity-0_9 g-color-white-opacity-0_8">
+          <div class="align-self-center g-pa-60">
+
+            <div class="col-md-4 align-self-center g-py-20">
+              <img class="g-height-350" v-bind:src="event.image" alt="Brewery Image">
+            </div>
+
+            <div class="u-heading-v2-2--bottom g-brd-primary g-mb-30">
+              <h2 class="u-heading-v2__title h1 g-color-white text-uppercase g-font-weight-600">{{event.title}}</h2>
+            </div>
+
+            <div class="lead g-font-weight-400 g-mb-40">
+              <p>{{event.content}}</p>
+            </div>
+
+            <address class="text-uppercase display-6">
+              <ul class="list-unstyled mb-0">
+                <li class="d-flex align-items-baseline g-mb-10">
+                  <i class="fa fa-map-marker g-color-primary g-mr-10"></i>
+                    <span class="g-color-white">{{event.location}}</span>
+                </li>
+                <li class="d-flex align-items-baseline g-mb-10">
+                  <i class="fa fa-calendar g-color-primary g-mr-10"></i>
+                    <span class="g-color-white">{{event.date}}</span>
+                </li>
+                <li class="d-flex align-items-baseline" v-for="beer in event.beers">
+                  <i class="fa fa-glass g-color-primary g-mr-10"></i>
+                    <span class="g-color-white">{{beer.name}} <a class="g-color-primary"> | | </a> {{beer.style}}</span>
+                </li>
+              </ul>
+            </address>
+          </div>
+        </div>
+        <!-- End section Content -->
+
+        <!-- Google Map -->
+        <div class="col-lg g-min-height-400">
+          <div id="map"></div>
+        </div>
+        <!-- End Google Map -->
+      </div>
+    </section>
+    <!-- Footer -->
 
   </div>
 </template>
@@ -25,7 +73,7 @@
 <style>
 #map { 
   width: 100%; 
-  height: 500px;
+  height: 100%;
 }
 
 #marker {
