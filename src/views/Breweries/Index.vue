@@ -1,7 +1,7 @@
 <template>
   <div class="breweries-index">
 
-    <datalist id="search-filters">
+<!--     <datalist id="search-filters">
       <option v-for="brewery in breweries">{{brewery.name}}</option>
     </datalist>
 
@@ -23,12 +23,13 @@
         </router-link>    
       </div>
     </div>
+ -->
 
   </div>
 </template>
 
 <style>
-canvas.mapboxgl-canvas {
+/*canvas.mapboxgl-canvas {
    position: relative !important;
  }
 
@@ -49,7 +50,7 @@ canvas.mapboxgl-canvas {
  
 .mapboxgl-popup {
   max-width: 200px;
-}
+}*/
 
 </style>
 
