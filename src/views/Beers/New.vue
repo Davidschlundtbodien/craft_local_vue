@@ -23,7 +23,7 @@
 
                   <div class="row justify-content-center">
                     <div class="col-xs-12 col-sm-3 mb-3">
-                      <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" type="number" placeholder="ABV" v-model="newBeerAbv">
+                      <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" type="text" placeholder="ABV" v-model="newBeerAbv">
                     </div>
 
                     <div class="col-xs-12 col-sm-3 mb-3">

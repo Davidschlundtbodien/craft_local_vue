@@ -1,20 +1,5 @@
 <template>
   <div class="beers-show">
-<!--     <button v-if="isCurrentBrewery()"><router-link v-bind:to="'/beers/' + beer.id + '/edit'">Edit</router-link></button>
-    <button v-if="isCurrentBrewery()" v-on:click="destroyBeer(beer)">Remove</button>
-    <h1>{{ beer.name }}</h1>
-    <img v-bind:src="beer.image" alt="Beer image">
-    <h2>{{beer.style}} || {{beer.abv}}% || IBU: {{beer.ibu}} || SRM: {{beer.srm}}</h2>
-    <h3>Glassware: {{beer.glassware}}</h3>
-    <h3>Released: {{beer.released}}</h3>
-    <p>{{beer.description}}</p>
-
-    <div v-for="format in beer.formats" class="container">
-      <h3>{{format.name}}</h3>
-      <h4>{{format.single_unit_volume}} oz || Pack: {{format.pack}} || Case: {{format.case}}</h4>
-    </div>  -->
-    
-
     
     <div class="row justify-content-center g-py-200 g-pos-rel">
         <div class="col-md-4">
@@ -28,7 +13,7 @@
           <div class="u-heading-v2-3--bottom g-brd-primary g-mb-30">
             <p class="lead">{{beer.description}}</p>
           </div>
-          <p class="lead"> {{beer.glassware}}</p>
+          <p class="lead"> Glassware: {{beer.glassware}}</p>
           <p>Released: {{beer.released}}</p>
           <router-link v-bind:to="'/beers/' + beer.id + '/edit'">
           <a v-if="isCurrentBrewery()" class="btn btn-md u-btn-inset u-btn-outline-primary g-mr-10 g-mb-15">Edit</a>
@@ -68,25 +53,20 @@
     </div>
       <!-- End Counters -->
 
-    <section class="row justify-content-center g-py-100 g-pos-rel g-bg-darkgray-radialgradient-circle">
-      <article class="d-md-table w-80 g-bg-white g-mb-3" v-for="format in beer.formats">
-
-        <!-- Article Content -->
-        <div class="d-md-table-cell align-middle g-py-15 g-px-20">
-          <h3 class="h6 g-font-weight-700 text-uppercase">
-            <a class="g-color-gray-dark-v2">{{format.name}}</a>
-          </h3>
-          <em class="g-color-gray-dark-v5 g-font-style-normal">Pack: {{format.pack}} || Case: {{format.case}}</em>
-        </div>
-        <!-- End Article Content -->
-
-        <!-- Price -->
-        <div class="d-md-table-cell align-middle g-py-5 g-px-20">
-          <span class="d-block g-color-gray-dark-v2 g-font-weight-700">{{format.single_unit_volume}}</span>
-          <span class="d-block g-color-gray-dark-v5 g-font-size-11 text-uppercase">ounces</span>
-        </div>
-        <!-- End Price -->
-      </article>
+    <section class="container g-py-20 g-pos-rel">
+      <div class="row">
+      <div class="col-md-4 g-mb-30 justify-content-center" v-for="format in beer.formats">
+        <!-- Article -->
+        <article class="u-shadow-v1-5 g-bg-white g-color-black text-center rounded g-px-20 g-py-40 g-mb-5">
+          <!-- Article Content -->
+          <h4 class="h5 g-color-black g-font-weight-600 g-mb-10">{{format.name}}</h4>
+          <p>Pack size : {{format.pack}} | | Case size: {{format.case}}</p>
+          <span class="d-block g-color-primary g-font-size-16">{{format.single_unit_volume}} oz</span>
+          <!-- End Article Content -->
+        </article>
+        <!-- End Article -->
+      </div>
+      </div>      
     </section>
     
 

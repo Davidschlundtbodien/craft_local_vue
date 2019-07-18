@@ -1,5 +1,6 @@
 <template>
   <div class="events-new">
+    
     <section class="g-min-height-100vh g-flex-centered g-bg-img-hero g-bg-pos-top-center" style="background-image: url(https://assets.visitmilwaukee.org/visitmke/media/global/Partner%20Images/Gallery%20Size/VM-ThirdSpaceBrewing-Beers.jpg?ext=.jpg&mode=crop&width=1920&height=1080&scale=both);">
       <div class="container g-py-50 g-pos-rel g-z-index-1">
           <div class="row justify-content-center u-box-shadow-v24">

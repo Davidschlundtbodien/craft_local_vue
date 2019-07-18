@@ -7,14 +7,6 @@
     </datalist>
 
     <div class="container">
-      <h4>Upcoming Events: <div v-for="event in filterBy(brewery.events, $parent.searchFilter, 'title', 'location')">
-        <router-link v-bind:to="'/events/' + event.id">
-          <button v-on:click="$parent.searchClear()">Show more</button>
-        </router-link>
-      </div></h4> 
-    </div>
-
-    <div class="container">
       <div class="form-group">
         <span>Sort By: </span>
         <button v-on:click="setSortAttribute('abv')">ABV</button>
@@ -71,42 +63,32 @@
 
       </div>
     </div>
-      <!-- Beer list -->
-    <section class=" row justify-content-center g-py-100 g-pos-rel g-bg-darkgray-radialgradient-circle">
-      <article class="d-md-table w-80 g-bg-white g-mb-4" v-for="beer in brewery.beers">
-        <!-- Article Image -->
-        <a class="d-md-table-cell align-middle g-width-130">
-          <img class="d-block info-v5-2__image g-ml-minus-1" v-bind:src="beer.image" alt="Image Description">
-        </a>
-        <!-- End Article Image -->
 
-        <!-- Article Content -->
-        <div class="d-md-table-cell align-middle g-py-15 g-px-20">
-          <h3 class="h6 g-font-weight-700 text-uppercase">
-            <a class="g-color-gray-dark-v2">{{beer.name}}</a>
-          </h3>
-          <em class="g-color-gray-dark-v5 g-font-style-normal">{{beer.style}}</em>
-        </div>
-        <!-- End Article Content -->
+    <!-- Beer List -->
+    <section class="container justify-content-center">
+      <div class="row">
+      <div class="col-md-6 col-lg-3 g-mb-30" v-for="beer in brewery.beers">
+        <!-- Article -->
+        <article class="u-shadow-v1-5 g-bg-white g-color-black text-center rounded g-px-20 g-py-40 g-mb-5">
+          <!-- Article Image -->
+          <router-link v-bind:to="'/beers/' + beer.id">
+            <img class="d-inline-block g-height-200 img-fluid mb-4" v-bind:src="beer.image" alt="Image Description">
+          </router-link>  
+          <!-- End Article Image -->
 
-        <!-- Price -->
-        <div class="d-md-table-cell align-middle g-py-5 g-px-20">
-          <span class="d-block g-color-gray-dark-v2 g-font-weight-700">{{beer.abv}}%</span>
-          <span class="d-block g-color-gray-dark-v5 g-font-size-11 text-uppercase">ABV</span>
-        </div>
-        <!-- End Price -->
-
-        <!-- Actions -->
-        <div class="d-md-table-cell align-middle text-md-right g-pa-20">
-          <div class="g-mt-minus-10 g-mx-minus-5">
-            <router-link v-bind:to="'/beers/' + beer.id">
-              <a class="btn btn-lg u-btn-outline-primary u-btn-hover-v1-4 g-mr-10 g-mb-15" >View Beer</a>
-            </router-link>
-          </div>
-        </div>
-        <!-- End Actions -->
-      </article>
+          <!-- Article Content -->
+          <router-link v-bind:to="'/beers/' + beer.id">
+          <h4 class="h5 g-color-black g-font-weight-600 g-mb-10">{{beer.name}}</h4>
+          </router-link>
+          <p>{{beer.style}}</p>
+          <span class="d-block g-color-primary g-font-size-16">{{beer.abv}}%</span>
+          <!-- End Article Content -->
+        </article>
+        <!-- End Article -->
+      </div>
+      </div>      
     </section>
+
 
   </div>
 </template>

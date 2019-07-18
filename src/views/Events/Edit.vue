@@ -1,13 +1,5 @@
 <template>
   <div class="events-edit">
-<!-- 
-        <div class="container">
-          <span v-for="beer in beers"><br>
-            <label v-bind:for="beer.name">{{beer.name}}</label>
-            <input type="checkbox" v-bind:id="beer.id" v-bind:value="beer.id" v-model="beerIds">
-          </span>
-        </div>
- -->
 
     <section class="g-min-height-100vh g-flex-centered g-bg-img-hero g-bg-pos-top-center" style="background-image: url(https://torquebrewing.beer/wp-content/uploads/2017/05/IMG_1837-1920x1080.jpg);">
       <div class="container g-py-50 g-pos-rel g-z-index-1">
@@ -22,11 +14,11 @@
                 <form class="g-py-15" v-on:submit.prevent="submit()">
                   <div class="row">
                     <div class="col-xs-12 col-sm-6 mb-4">
-                      <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" type="text" placeholder="Event Title" v-model="newEventTitle">
+                      <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" type="text" placeholder="Event Title" v-model="event.title">
                     </div>
 
                     <div class="col-xs-12 col-sm-6 mb-4">
-                      <datetime class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" type="datetime" placeholder="Pick a date and time" v-model="event.scheduled.date" use12-hour auto></datetime>
+                      <datetime class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" type="datetime" placeholder="Pick a date and time" v-model="event.scheduled_date" use12-hour auto zone="UTC"></datetime>
                     </div>
                   </div>
 
@@ -103,7 +95,7 @@ export default {
   methods: {
     submit: function() {
       var params = {
-        name: this.event.name,
+        title: this.event.title,
         scheduled_date: this.event.scheduled_date,
         location: this.event.location,
         content: this.event.content,

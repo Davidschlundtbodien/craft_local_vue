@@ -1,29 +1,10 @@
 <template>
   <div class="events-show">
 
-<!--     <button v-if="isCurrentBrewery()"><router-link v-bind:to="'/events/' + event.id + '/edit'">Edit</router-link></button><br>
-    <button v-if="isCurrentBrewery()" v-on:click="destroyEvent(event)">Remove</button><br>
-
-    <img v-bind:src="event.image" alt="Event image">
-    <h1>{{ event.title }} || {{event.date}}</h1>
-    <h2>{{event.location}}</h2>
-    <p>{{event.content}}</p>
-    <div v-for="beer in event.beers">
-      <h4>{{beer.name}}</h4>
-      <h4>{{beer.style}} || {{beer.abv}}%</h4>
-    </div>
-
-
-    <div id="map"></div>
-
-
- -->
-
-    <!-- Footer -->
     <section class="container-fluid px-0">
       <div class="row no-gutters g-min-height-80vh">
         <!-- section Content -->
-        <div class="col-lg d-flex g-bg-black-opacity-0_9 g-color-white-opacity-0_8">
+        <div class="col-lg d-flex g-bg-darkgray-radialgradient-circle g-color-white-opacity-0_8">
           <div class="align-self-center g-pa-60">
 
             <div class="col-md-4 align-self-center g-py-20">
@@ -33,6 +14,10 @@
             <div class="u-heading-v2-2--bottom g-brd-primary g-mb-30">
               <h2 class="u-heading-v2__title h1 g-color-white text-uppercase g-font-weight-600">{{event.title}}</h2>
             </div>
+
+            <router-link v-bind:to="'/events/' + event.id + '/edit'">
+            <a v-if="isCurrentBrewery()" class="btn btn-md u-btn-primary g-mr-10 g-mb-15 g-color-white">Edit</a>
+            </router-link>
 
             <div class="lead g-font-weight-400 g-mb-40">
               <p>{{event.content}}</p>
@@ -58,14 +43,14 @@
         </div>
         <!-- End section Content -->
 
-        <!-- Google Map -->
+        <!-- Map -->
         <div class="col-lg g-min-height-400">
           <div id="map"></div>
         </div>
-        <!-- End Google Map -->
+        <!-- End Map -->
       </div>
     </section>
-    <!-- Footer -->
+
 
   </div>
 </template>

@@ -4,21 +4,10 @@
 <!--     <datalist id="search-filters">
       <option v-for="brewery in breweries">{{brewery.name}}</option>
     </datalist>
-
-    <div id="map" class="container"></div>
-
-    
-    <div class="container">
-      <div v-for="brewery in filterBy(breweries, $parent.searchFilter)">   
-        <router-link v-bind:to="'/breweries/' + brewery.id">
-          <button v-on:click="$parent.searchClear()">Show more</button>
-        </router-link>    
-      </div>
-    </div>
  -->
     <section class="g-py-100 g-pos-rel">
 
-      <div class="dzsparallaxer auto-init height-is-based-on-content use-loading g-bg-cover g-bg-black-opacity-0_10--after">
+      <div class="dzsparallaxer height-is-based-on-content g-bg-cover g-bg-black-opacity-0_10">
         <div class="divimage dzsparallaxer--target w-100" style="height: 140%; background: url(http://furnaceroombrewery.com/images/stories/1120x600/beer_ingredient_glass.jpg);"></div>
         <div class="container g-bg-cover__inner g-py-100">
           <div class="row justify-content-center">
@@ -32,15 +21,19 @@
           </div>
         </div>
       </div>
+    </section>
 
+    <section class="container justify-content-center g-py-80">
       <!-- Team Block -->
-      <div class="row justify-content-center g-py-100 g-pos-rel">
-        <div class="col-lg-4 g-mb-30" v-for="brewery in breweries">
+      <div class="row">
+        <div class="col-md-4 g-mb-30" v-for="brewery in orderBy(breweries, 'name')">
           <!-- Figure -->
-          <figure class="u-shadow-v19 g-bg-white g-rounded-4 g-pa-20">
+          <figure class="u-shadow-v1-5 g-bg-white g-rounded-4 g-pa-20">
             <div class="d-flex justify-content-start">
               <!-- Figure Image -->
-              <img class="g-width-90 g-height-90 rounded-circle g-mr-15" v-bind:src="brewery.profile_img" alt="Image Description">
+              <router-link v-bind:to="'/breweries/' + brewery.id">
+                <img class="g-width-90 g-height-90 rounded-5 g-mr-15" v-bind:src="brewery.profile_img" alt="Image Description">
+              </router-link>
               <!-- Figure Image -->
 
               <div class="d-block">
@@ -105,7 +98,7 @@
             </div>
             <!-- End Figure Title -->
 
-            <div class="d-flex justify-content-start" v-for="beer in limitBy(orderBy(filterBy(brewery.beers), 'released'), 1)">
+            <div class="d-flex justify-content-start" v-for="beer in limitBy(orderBy(brewery.beers, 'released', -1), 1)">
               <!-- Figure Image -->
               <router-link v-bind:to="'/beers/' + beer.id">
                 <img class="g-width-50 g-height-50 rounded-circle g-mr-15" v-bind:src="beer.image" alt="Image Description">
@@ -116,7 +109,9 @@
                 <!-- Figure Info -->
                 <div class="g-mb-5">
                   <h3 class="h6 g-font-weight-600 mb-1">
-                    <a class="g-color-black g-color-primary--hover" href="#">{{beer.name}}</a>
+                    <router-link v-bind:to="'/beers/' + beer.id">
+                      <a class="g-color-black g-color-primary--hover">{{beer.name}}</a>
+                    </router-link>  
                   </h3>
                   <em class="g-color-gray-dark-v4 g-font-style-normal g-font-size-12">Date: </em>
                   <a class="g-font-size-12" href="#">{{beer.released}}</a>
@@ -134,29 +129,6 @@
 </template>
 
 <style>
-/*canvas.mapboxgl-canvas {
-   position: relative !important;
- }
-
-#map { 
-  width: 100%; 
-  height: 500px;
-}
-
-.mapboxgl-marker {
-  background-image: url(https://cdn0.iconfinder.com/data/icons/beer-set-glyph-silhouettes/300/205522386Untitled-3-512.png);
-  background-size: cover;
-  background-color: #4ff026;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-}
- 
-.mapboxgl-popup {
-  max-width: 200px;
-}*/
-
 </style>
 
 <script>
@@ -175,30 +147,6 @@ export default {
     axios.get("/api/breweries").then(response => {
       this.breweries = response.data;
       console.log(this.breweries);
-    });
-  },
-  updated: function() {
-    mapboxgl.accessToken = 'pk.eyJ1IjoibWFwc2tpIiwiYSI6ImNqeGFseXZ3dDAzZ3kzeW84MTZjNnBtaDYifQ.F-JPPqi8gSB8FSYqq6bJGA';
-    
-    var city = [-115.1398, 36.1699];
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: city,
-      zoom: 10,
-    });
-
-    this.breweries.forEach(function(brewery) {
-      var el = document.createElement('div');
-      el.className = 'marker';
-      // create the popup
-      var popup = new mapboxgl.Popup({ offset: 25 })
-        .setText(brewery.name);
-      // create the marker
-      var marker = new mapboxgl.Marker(el)
-        .setLngLat([brewery.longitude, brewery.latitude])
-        .setPopup(popup)
-        .addTo(map);
     });
   },
   methods: {}
