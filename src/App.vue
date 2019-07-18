@@ -104,39 +104,39 @@
                   <h2 class="u-heading-v2__title h6 text-uppercase mb-0">About Us</h2>
                 </div>
 
-                <p>About Unify dolor sit amet, consectetur adipiscing elit. Maecenas eget nisl id libero tincidunt sodales.</p>
+                <p>Craft Local aims to expand brand awareness of local independant breweries,w by providing a clear and unified method to display product information to both local and visiting patrons.</p>
               </div>
               <!-- End Footer Content -->
 
               <!-- Footer Content -->
               <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
                 <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
-                  <h2 class="u-heading-v2__title h6 text-uppercase mb-0">Latest Posts</h2>
+                  <h2 class="u-heading-v2__title h6 text-uppercase mb-0">Latest Updates</h2>
                 </div>
 
                 <article>
                   <h3 class="h6 g-mb-2">
-                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">Incredible template</a>
+                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">Image Links for beer and events</a>
                   </h3>
-                  <div class="small g-color-white-opacity-0_6">May 8, 2017</div>
+                  <div class="small g-color-white-opacity-0_6">July 18, 2019</div>
                 </article>
 
                 <hr class="g-brd-white-opacity-0_1 g-my-10">
 
                 <article>
                   <h3 class="h6 g-mb-2">
-                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">New features</a>
+                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">New Interface</a>
                   </h3>
-                  <div class="small g-color-white-opacity-0_6">June 23, 2017</div>
+                  <div class="small g-color-white-opacity-0_6">July 17, 2019</div>
                 </article>
 
                 <hr class="g-brd-white-opacity-0_1 g-my-10">
 
                 <article>
                   <h3 class="h6 g-mb-2">
-                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">New terms and conditions</a>
+                    <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#">Spaceship Update</a>
                   </h3>
-                  <div class="small g-color-white-opacity-0_6">September 15, 2017</div>
+                  <div class="small g-color-white-opacity-0_6">May 4, 2019</div>
                 </article>
               </div>
               <!-- End Footer Content -->

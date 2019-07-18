@@ -1,7 +1,7 @@
 <template>
   <div class="beers-edit">
 
-    <section class="g-min-height-100vh g-flex-centered g-bg-img-hero g-bg-pos-top-center" style="background-image: url(https://chamberbusinessnews.com/wp-content/uploads/2019/06/beer-2370783_1920.jpg);">
+    <section class="g-min-height-100vh g-flex-centered g-bg-img-hero g-bg-pos-top-center" style="background-image: url(https://calstate.aaa.com/sgl-assets/files/article_hero/Fogbelt-brewing-company-santa-rosa-california-craft-beer-tasting-beer-flight-via-magazine.jpg);">
       <div class="container g-py-50 g-pos-rel g-z-index-1">
           <div class="row justify-content-center u-box-shadow-v24">
             <div class="col-sm-10 col-md-9 col-lg-6">
